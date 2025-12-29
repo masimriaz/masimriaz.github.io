@@ -1,0 +1,462 @@
+/* ========================================
+   Custom Styles for Asim Riaz Portfolio
+   Professional, Executive, Business-Credible
+   ======================================== */
+
+/* ========== CSS Variables ========== */
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
+    --primary-light: #3b82f6;
+    --secondary-color: #64748b;
+    --dark-color: #1e293b;
+    --light-bg: #f8fafc;
+    --white: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* ========== Base Styles ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ========== Typography ========== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.display-3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+}
+
+.text-center .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ========== Navigation ========== */
+.navbar {
+    padding: 1rem 0;
+    transition: var(--transition);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary) !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--text-secondary) !important;
+    padding: 0.5rem 1rem !important;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* ========== Buttons ========== */
+.btn {
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    transition: var(--transition);
+    text-transform: none;
+    letter-spacing: 0.01em;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-width: 2px;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+/* ========== Sections ========== */
+section {
+    position: relative;
+}
+
+.py-6 {
+    padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+    .py-6 {
+        padding: 4rem 0;
+    }
+}
+
+/* ========== Hero Section ========== */
+.hero-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    padding-top: 80px;
+}
+
+.hero-section h1 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.hero-section h2 {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* ========== About Section ========== */
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.about-content p.lead {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ========== Services Section ========== */
+.service-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.service-card h3 {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.service-card p {
+    line-height: 1.7;
+}
+
+/* ========== Experience Section ========== */
+.experience-block {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.experience-block:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.experience-block h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.experience-block p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+/* ========== AI Philosophy Section ========== */
+.philosophy-content .lead {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.philosophy-point h4 {
+    color: var(--text-primary);
+}
+
+.philosophy-point p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.alert-light {
+    background-color: #f1f5f9;
+    border-color: var(--border-color);
+}
+
+.alert-light h5 {
+    color: var(--primary-color);
+}
+
+/* ========== Technology Stack ========== */
+.tech-category {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    display: inline-block;
+    background: var(--light-bg);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.tech-tag:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.tech-tag-sm {
+    display: inline-block;
+    background: var(--light-bg);
+    color: var(--text-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+/* ========== Case Study Section ========== */
+.case-study-featured {
+    background: var(--white);
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: var(--shadow-md);
+}
+
+.case-study-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.case-study-featured h2 {
+    color: var(--text-primary);
+}
+
+.case-metrics {
+    padding: 1rem;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.metric-item {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.case-study-content h4 {
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+}
+
+.case-study-content h4:first-child {
+    margin-top: 0;
+}
+
+@media (max-width: 992px) {
+    .case-study-featured {
+        padding: 2rem;
+    }
+}
+
+/* ========== Contact Section ========== */
+.contact-card {
+    padding: 2rem;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.contact-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.contact-card i {
+    font-size: 2rem;
+    display: block;
+}
+
+.contact-card a {
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.contact-card a:hover {
+    color: var(--primary-color);
+}
+
+.cta-text {
+    margin-top: 3rem;
+}
+
+/* ========== Footer ========== */
+.footer {
+    background-color: var(--dark-color) !important;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer a {
+    transition: var(--transition);
+}
+
+.footer a:hover {
+    opacity: 0.8;
+}
+
+/* ========== Utilities ========== */
+.bg-light {
+    background-color: var(--light-bg) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+/* ========== Responsive Adjustments ========== */
+@media (max-width: 768px) {
+    .display-3 {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 1.1rem;
+    }
+
+    .service-card {
+        margin-bottom: 1rem;
+    }
+
+    .btn-lg {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* ========== Smooth Scroll Offset ========== */
+section[id] {
+    scroll-margin-top: 80px;
+}
+
+/* ========== Print Styles ========== */
+@media print {
+    .navbar,
+    .footer,
+    .btn {
+        display: none;
+    }
+    
+    section {
+        page-break-inside: avoid;
+    }
+}
