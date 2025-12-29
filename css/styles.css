@@ -5,21 +5,26 @@
 
 /* ========== CSS Variables ========== */
 :root {
-    --primary-color: #2563eb;
-    --primary-dark: #1e40af;
-    --primary-light: #3b82f6;
-    --secondary-color: #64748b;
-    --dark-color: #1e293b;
-    --light-bg: #f8fafc;
+    --primary-color: #0d6efd;
+    --primary-dark: #0a58ca;
+    --primary-light: #3d8bfd;
+    --accent-color: #198754;
+    --secondary-color: #6c757d;
+    --dark-color: #212529;
+    --darker-color: #0a0e27;
+    --light-bg: #f8f9fa;
     --white: #ffffff;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #64748b;
-    --border-color: #e2e8f0;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.2);
     --transition: all 0.3s ease;
+    --gradient-primary: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    --gradient-hero: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2a3147 100%);
 }
 
 /* ========== Base Styles ========== */
@@ -66,7 +71,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     color: var(--text-primary);
     position: relative;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .section-title::after {
@@ -74,9 +80,10 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 60px;
+    width: 80px;
     height: 4px;
-    background: var(--primary-color);
+    background: var(--gradient-primary);
+    border-radius: 2px;
 }
 
 .text-center .section-title::after {
@@ -88,12 +95,23 @@ h1, h2, h3, h4, h5, h6 {
 .navbar {
     padding: 1rem 0;
     transition: var(--transition);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.navbar.shadow {
+    box-shadow: var(--shadow-md);
 }
 
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary) !important;
+    transition: var(--transition);
+}
+
+.navbar-brand:hover {
+    color: var(--primary-color) !important;
 }
 
 .nav-link {
@@ -101,9 +119,28 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-secondary) !important;
     padding: 0.5rem 1rem !important;
     transition: var(--transition);
+    position: relative;
 }
 
-.nav-link:hover {
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 70%;
+}
+
+.nav-link:hover,
+.nav-link.active {
     color: var(--primary-color) !important;
 }
 
@@ -142,6 +179,20 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-lg);
 }
 
+.btn-outline-light {
+    color: var(--white);
+    border-color: var(--white);
+    border-width: 2px;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border-color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
 .btn-lg {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
@@ -164,18 +215,66 @@ section {
 
 /* ========== Hero Section ========== */
 .hero-section {
-    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    background: var(--gradient-hero);
     padding-top: 80px;
+    position: relative;
+    overflow: hidden;
 }
 
-.hero-section h1 {
-    color: var(--text-primary);
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 50%, rgba(13, 110, 253, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.profile-image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 48px rgba(13, 110, 253, 0.4);
+}
+
+.hero-title {
+    color: var(--white);
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.hero-section h2 {
-    font-weight: 600;
-    color: var(--text-secondary);
+.hero-subtitle {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.hero-text {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 /* ========== About Section ========== */
@@ -194,30 +293,56 @@ section {
 /* ========== Services Section ========== */
 .service-card {
     background: var(--white);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2rem;
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
     transition: var(--transition);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
     border-color: var(--primary-color);
 }
 
 .service-icon {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1);
+    color: var(--primary-dark);
 }
 
 .service-card h3 {
     color: var(--text-primary);
     font-weight: 700;
+    margin-top: 1rem;
 }
 
 .service-card p {
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 /* ========== Experience Section ========== */
@@ -313,16 +438,30 @@ section {
 /* ========== Case Study Section ========== */
 .case-study-featured {
     background: var(--white);
-    border: 2px solid var(--primary-color);
-    border-radius: 12px;
+    border: none;
+    border-radius: 20px;
     padding: 3rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.case-study-featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: var(--gradient-primary);
 }
 
 .case-study-label {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .case-study-featured h2 {
@@ -330,9 +469,9 @@ section {
 }
 
 .case-metrics {
-    padding: 1rem;
-    background: var(--light-bg);
-    border-radius: 8px;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
     border-left: 4px solid var(--primary-color);
 }
 
@@ -344,6 +483,7 @@ section {
 .case-study-content h4 {
     color: var(--primary-color);
     margin-top: 1.5rem;
+    font-weight: 700;
 }
 
 .case-study-content h4:first-child {
